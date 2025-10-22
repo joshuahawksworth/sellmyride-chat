@@ -1,3 +1,4 @@
+import "./bootstrap";
 import { createRoot } from "react-dom/client";
 import ChatApp from "./components/ChatApp";
 
