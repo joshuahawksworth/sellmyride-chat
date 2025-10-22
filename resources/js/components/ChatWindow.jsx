@@ -48,16 +48,9 @@ export default function ChatWindow({
             console.error("Echo is not initialized");
             return;
         }
-
-        console.log(
-            "Subscribing to channel:",
-            `conversation.${conversation.id}`
-        );
-
         window.Echo.channel(`conversation.${conversation.id}`).listen(
             ".message.sent",
             (e) => {
-                console.log("New message received:", e);
                 setMessages((prev) => [...prev, e]);
             }
         );
