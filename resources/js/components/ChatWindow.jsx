@@ -67,20 +67,18 @@ export default function ChatWindow({
         e.preventDefault();
         if (!newMessage.trim()) return;
 
+        const messageToSend = newMessage;
+        setNewMessage("");
         setSending(true);
-        try {
-            const response = await api.post(
-                `/conversations/${conversation.id}/messages`,
-                {
-                    message: newMessage,
-                }
-            );
 
-            setMessages((prev) => [...prev, response.data]);
-            setNewMessage("");
+        try {
+            await api.post(`/conversations/${conversation.id}/messages`, {
+                message: messageToSend,
+            });
         } catch (error) {
             console.error("Failed to send message:", error);
             alert("Failed to send message");
+            setNewMessage(messageToSend);
         } finally {
             setSending(false);
         }
