@@ -2,6 +2,8 @@
 
 A real-time private chat application built with Laravel 12 and React, featuring instant messaging via Pusher broadcasting.
 
+![Chat Demo](public/demo.gif)
+
 ## Tech Stack
 
 **Backend:**
