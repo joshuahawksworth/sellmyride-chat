@@ -6,7 +6,6 @@ import api from "../api";
 
 export default function ChatApp() {
     const [user, setUser] = useState(null);
-    const [token, setToken] = useState(localStorage.getItem("token"));
     const [selectedUser, setSelectedUser] = useState(null);
     const [conversation, setConversation] = useState(null);
 
@@ -25,7 +24,6 @@ export default function ChatApp() {
 
     const handleLogin = (userData, userToken) => {
         setUser(userData);
-        setToken(userToken);
         // Reinitialize Echo after login with new token
         if (window.initializeEcho) {
             window.initializeEcho();
@@ -39,7 +37,6 @@ export default function ChatApp() {
         localStorage.removeItem("token");
         localStorage.removeItem("user");
         setUser(null);
-        setToken(null);
     };
 
     const handleSelectUser = async (selectedUser) => {
